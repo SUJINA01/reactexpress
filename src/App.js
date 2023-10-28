@@ -12,7 +12,7 @@ function App() {
 
   const [password, setPassword] = useState('');
 
-  const [email, setEmail] = useState('');
+  const [emailid, setEmail] = useState('');
 
  
 
@@ -32,7 +32,7 @@ function App() {
 
     event.preventDefault();
 
-    axios.post('http://localhost:3000/insert', { uid: userid, password: password, emailid: email })
+    axios.post('http://localhost:3000/insert', { userid: userid, password: password, emailid: emailid })
 
       .then((res) => {console.log(res);
 
@@ -44,9 +44,9 @@ function App() {
 
  
 
-  const updateuser = () => {
+  const updateUser = () => {
 
-    axios.put(`http://localhost:3000/update`, { uid: userid, password: password, emailid: email })
+    axios.put('http://localhost:3000/update', { uid: userid, password: password, emailid: emailid })
 
       .then((res) => {
 
@@ -60,9 +60,9 @@ function App() {
 
  
 
-  const deleteuser = () => {
+  const deleteUser = () => {
 
-    axios.delete(`http://localhost:3000/delete?uid=${userid}`)
+    axios.delete('http://localhost:3000/delete?userid=${userid}')
 
       .then((res) => {
 
@@ -114,15 +114,15 @@ function App() {
 
           <b>Email ID</b>
 
-          <input type="email" value={email} onChange={updateEmail} /><br />
+          <input type="email" value={emailid} onChange={updateEmail} /><br />
 
           <input type="submit" value="Add" />&nbsp;&nbsp;
 
           <input type="reset" value="Reset" />&nbsp;&nbsp;
 
-          <input type="button" value="Update" onClick={updateuser} />&nbsp;&nbsp;
+          <input type="button" value="Update" onClick={updateUser} />&nbsp;&nbsp;
 
-          <input type="button" value="Delete" onClick={deleteuser} />&nbsp;&nbsp;
+          <input type="button" value="Delete" onClick={deleteUser} />&nbsp;&nbsp;
 
         </form>
 
